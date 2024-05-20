@@ -1,0 +1,53 @@
+o fetch the extract in a JSON file with 2 fields - merge ID and changes for a given merge request ID using a REST API in Python, you will need to include the project ID, merge request ID, and group information. Here's an example script that combines all these details:
+
+```python
+import requests
+import json
+
+# GitLab API endpoint and personal access token
+gitlab_url = "https://gitlab.example.com/api/v4/"
+personal_access_token = "YOUR_PERSONAL_ACCESS_TOKEN"
+
+# Group name and project name within the group
+group_name = "YOUR_GROUP_NAME"
+project_name = "YOUR_PROJECT_NAME"
+
+# Merge request ID for which you want to retrieve the changes
+merge_request_id = "MERGE_REQUEST_ID"
+
+# Get the group ID
+group_response = requests.get(f"{gitlab_url}/groups/{group_name}", headers={"Private-Token": personal_access_token})
+group_id = group_response.json().get("id")
+
+# Get the project ID
+project_response = requests.get(f"{gitlab_url}/projects/{group_id}%2F{project_name}", headers={"Private-Token": personal_access_token})
+project_id = project_response.json().get("id")
+
+# Make a GET request to the GitLab API to get the merge request details
+response = requests.get(
+    f"{gitlab_url}/projects/{project_id}/merge_requests/{merge_request_id}",
+    headers={"Private-Token": personal_access_token}
+)
+
+# Check if the request was successful
+if response.status_code == 200:
+    merge_request = response.json()
+    
+    # Extract merge ID and changes
+    merge_id = merge_request["iid"]
+    changes = merge_request["changes"]
+    
+    # Prepare data to write to JSON file
+    data = {
+        "merge_id": merge_id,
+        "changes": changes
+    }
+
+    # Write data to a JSON file
+    with open("merge_request_data.json", "w") as json_file:
+        json.dump(data, json_file, indent=4)
+    
+    print("Data has been written to merge_request_data.json")
+else:
+    print("Failed to retrieve merge request details. Status code:", response.status_code)
+```
