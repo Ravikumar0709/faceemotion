@@ -1,0 +1,25 @@
+``python
+import re
+import json
+
+# Sample input string
+input_string = '{\n "key1": "value1",\n "key2": "value2"\n};'
+
+# Use regular expressions to extract the JSON content
+json_content = re.search(r'{\n(.*?)\n};', input_string, re.DOTALL).group(1)
+
+# Load the extracted JSON content
+data = json.loads('{' + json_content + '}')
+
+# Extract and print the values
+values = list(data.values())
+print(values)
+```
+
+In this code snippet:
+1. The regular expression pattern `r'{\n(.*?)\n};'` is used to capture the content between `{` and `};` (excluding these delimiters).
+2. The `re.search` method is used with the `re.DOTALL` flag to match any character including newlines.
+3. The extracted JSON content is loaded using `json.loads`, by adding back the braces `{}` around the content.
+4. The values from the JSON data are extracted and printed as a list.
+
+This code will extract and print the values (`"value1", "value2"`) from the JSON field that starts with `{\n` and ends with `};\n`.
