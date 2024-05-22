@@ -1,0 +1,9 @@
+To generate a description of source code changes using the block format efficiently, consider the following tuning instructions:
+- Start by analyzing the context of the code changes and the purpose of the modifications
+- Use clear and concise language to describe each change within the block formatting
+- Use consistent labeling with "/n+" for additions and "/n-" for deletions
+- Include specific details about the changes made, such as new functionalities added or redundant code removed
+- Organize the descriptions in a logical and easy-to-follow manner to enhance readability
+- Prioritize highlighting significant changes to provide a comprehensive overview of the source code modifications.
+
+By following these tuning instructions, you can generate detailed and informative descriptions of source code changes effectively using the block format.
