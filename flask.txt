@@ -1,0 +1,47 @@
+Here is an example code using Flask to create a REST API that takes input of group ID, project ID, and merge request ID, retrieves the diff of file changes from GitLab for the specified merge request, and then passes the file changes (along with merge ID) to LLM through an API call:
+
+1. Make sure you have Flask and requests library installed (`pip install Flask requests`).
+
+2. Create a new Python file (for example, `app.py`) and add the following code:
+
+```python
+from flask import Flask, request, jsonify
+import requests
+
+app = Flask(__name__)
+
+@app.route('/get_diff_and_pass_to_llm', methods=['POST'])
+def get_diff_and_pass_to_llm():
+    data = request.json
+    group_id = data['group_id']
+    project_id = data['project_id']
+    merge_id = data['merge_id']
+
+    # Get diff file changes from GitLab
+    gitlab_url = "https://gitlab.com"
+    diff_url = f"{gitlab_url}/api/v4/groups/{group_id}/projects/{project_id}/merge_requests/{merge_id}/changes"
+    response = requests.get(diff_url)
+    diff_files = response.json()
+
+    # Prepare data to pass to LLM API
+    llm_data = {
+        "merge_id": merge_id,
+        "diff_files": diff_files
+    }
+
+    # Pass the data to LLM API
+    llm_api_url = "https://llm.api.com"
+    llm_response = requests.post(llm_api_url, json=llm_data)
+
+    if llm_response.status_code == 200:
+        return jsonify({"message": "Data passed to LLM API successfully", "llm_response": llm_response.json()})
+    else:
+        return jsonify({"error": "Error in passing data to LLM API"})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+3. Run the Flask app by executing `python app.py` in your terminal.
+
+4. Send a POST request to `http://localhost:5000/get_diff_and_pass_to_llm` with JSON data including the input variables (`group_id`, `project_id`, and `merge_id`) to trigger the process of getting diff file changes from GitLab and passing the data to LLM through the API.
