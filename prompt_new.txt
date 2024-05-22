@@ -1,0 +1,11 @@
+Prompt Instruction:
+1. Request the user to input the merge request ID for which source code changes need to be described.
+2. Retrieve the JSON data containing the source code changes related to the specified merge request ID.
+3. Navigate the complex JSON structure to extract only the pertinent information essential for describing the source code modifications.
+4. Focus on identifying and isolating the relevant portion of the JSON data that pertains directly to the source code differences, such as file paths, line changes, commit messages, and author details.
+5. Generate detailed descriptions of the source code changes within the simplified JSON format, emphasizing clarity and coherence in presenting the key details of the modifications.
+6. Tailor the description to provide a comprehensive overview of the source code differences while eliminating unnecessary complexities from the JSON output.
+7. Implement precise parsing techniques to accurately extract and present the significant source code change information for generating descriptive summaries.
+8. Validate the accuracy and completeness of the produced source code change descriptions to reflect the modifications captured in the GitLab merge request effectively.
+9. Notify the user upon successful generation of the source code change descriptions, offering insights or metrics on the modifications as required.
+10. Employ error handling strategies to address any challenges encountered during the extraction and interpretation of the complex JSON data, providing user-friendly prompts to facilitate the description generation process effectively.
