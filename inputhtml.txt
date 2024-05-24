@@ -1,0 +1,31 @@
+```html
+<html>
+<head>
+    <title>Send JSON Data</title>
+</head>
+<body>
+    <h1>Send JSON Data</h1>
+    
+    <form action="http://localhost:5000/get_diff_and_pass_to_model" method="POST">
+        <label for="group_id">Group ID:</label>
+        <input type="text" id="group_id" name="group_id"><br><br>
+        
+        <label for="project_id">Project ID:</label>
+        <input type="text" id="project_id" name="project_id"><br><br>
+        
+        <label for="merge_id">Merge ID:</label>
+        <input type="text" id="merge_id" name="merge_id"><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+```
+
+2. Run your Flask application and open your browser to access the URL `http://localhost:5000/index.html` (or the appropriate file path).
+
+3. Fill in the input fields with the desired values for Group ID, Project ID, and Merge ID, and then click the "Submit" button.
+
+The form will submit the data as a POST request to your Flask application endpoint `/get_diff_and_pass_to_model` with the JSON data provided by the user.
+
+In your Flask application, make sure to handle the POST request in the appropriate route and extract the JSON data from the request body.
