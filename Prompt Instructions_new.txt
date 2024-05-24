@@ -1,0 +1,11 @@
+Prompt Instructions:
+1. Specify the target or objective for the generated description of the code changes extracted as a diff file.
+2. Utilize GitLab properties to access the diff file that captures the code modifications.
+3. Review the diff file to identify and focus solely on the relevant portions essential for understanding the code changes.
+4. Isolate the key components of the diff file that directly relate to the code alterations, omitting any extraneous details.
+5. Craft a detailed description that highlights the significant code changes identified within the relevant portions of the diff file.
+6. Ensure that the description provides a clear and concise overview of the code modifications, emphasizing key details and context.
+7. Exclude unnecessary or irrelevant information from the description to maintain precision and relevance.
+8. Structure the description in a format that is logical and easy to comprehend, enhancing the clarity of the code change explanations.
+9. Validate the accuracy and completeness of the description by cross-referencing with the actual code modifications in the diff file.
+10. Seek feedback from users for validation and further refinement of the generated code change descriptions to meet the intended objectives effectively.
