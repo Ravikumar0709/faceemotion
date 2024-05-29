@@ -1,0 +1,44 @@
+``html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitLab Merge ID Difference Checker</title>
+</head>
+<body>
+    <form id="gitlabForm">
+        <label for="group_id">Group ID:</label>
+        <input type="text" id="group_id" name="group_id"><br><br>
+        
+        <label for="project_id">Project ID:</label>
+        <input type="text" id="project_id" name="project_id"><br><br>
+        
+        <label for="merge_ids">Merge IDs (separate by commas):</label>
+        <textarea id="merge_ids" name="merge_ids" rows="4" cols="50"></textarea><br><br>
+        
+        <input type="button" onclick="jsonSubmit()" value="Get Difference">
+    </form>
+
+    <script>
+        function jsonSubmit() {
+            var form = document.getElementById('gitlabForm');
+            var formData = new FormData(form);
+
+            var jsonData = {}; // Create an empty object to store form data as JSON
+            formData.forEach(function(value, key){
+                jsonData[key] = value;
+            });
+
+            fetch('/get_difference', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            })
+            .then(response => response.text())
+            .then(data => console.log(data));
+        }
+    </script>
+</body>
+</html>
+```
