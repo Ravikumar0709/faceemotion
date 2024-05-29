@@ -1,0 +1,4 @@
+SKILLS & COMPETENCIES
+Machine learning,Statistical modeling, Natural language processing, Neural networks, Deep learning algorithms, Data visualization
+Business intelligence, Data wrangling, Feature engineering, Generative AI, Predictive modeling, Model deployment
+Research and development , data engineering
