@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Document</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .chat-container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .chat-box { border: 1px solid #ddd; padding: 20px; height: 300px; overflow-y: auto; background-color: #f9f9f9; }
+        .chat-box p { margin: 5px 0; }
+        .user-msg { font-weight: bold; color: blue; }
+        .bot-msg { font-style: italic; color: green; }
+        input[type="text"] { width: 80%; padding: 10px; margin-top: 10px; }
+        button { padding: 10px 20px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <h1>Chat with Document</h1>
+    <div class="chat-box">
+        {% for chat in chat_history %}
+            <p class="user-msg">You: {{ chat.user }}</p>
+            <p class="bot-msg">Bot: {{ chat.bot }}</p>
+        {% endfor %}
+    </div>
+    <form method="POST">
+        <input type="text" name="user_question" placeholder="Ask a question..." required>
+        <button type="submit">Send</button>
+    </form>
+    <form method="POST" action="/clear_chat_history">
+        <button type="submit">Clear Chat History</button>
+    </form>
+</div>
+
+</body>
+</html>
